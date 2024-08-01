@@ -1,18 +1,14 @@
+#include "../include/library-system.hpp"
 #include <iostream>
-#include <vector>
 
 int main(void) {
-    std::vector<int> vec;
+    std::cout << "Welcome to Library System\n";
 
-    vec.emplace_back(20);
-    vec.emplace_back(30);
-    vec.emplace_back(10);
-    vec.emplace_back(40);
+    LibrarySystem system;
 
-    for (const auto &val : vec) {
-        std::cout << val << ' ';
+    while (true) {
+        system.run();
     }
-    std::cout << '\n';
 
-    return 0;
+    return EXIT_SUCCESS;
 }
