@@ -6,7 +6,7 @@
 int Book::idSequence = 0;
 
 Book::Book(std::string name, int quantity)
-    : id(idSequence++), name(name), quantity(quantity), borrowed(0) {}
+    : id(Book::idSequence++), name(name), quantity(quantity), borrowed(0) {}
 
 Book::Book() : Book("", 0) {}
 
@@ -72,4 +72,6 @@ void Book::deserialize(const std::vector<std::string> &tokens) {
     this->name = tokens[1];
     this->quantity = std::stoi(tokens[2]);
     this->borrowed = std::stoi(tokens[3]);
+
+    Book::idSequence = this->id + 1;
 }
