@@ -1,7 +1,12 @@
 #ifndef SYSTEM_ACTION_HANDLER_HPP_
 #define SYSTEM_ACTION_HANDLER_HPP_
 
+#include "../include/book-repository.hpp"
+
 class SystemActionHandler {
+  private:
+    BookRepository bookRepo;
+
   public:
     void handleAction(int actionCode);
 

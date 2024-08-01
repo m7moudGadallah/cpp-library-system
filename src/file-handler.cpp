@@ -26,6 +26,8 @@ FileHandler::readFromFile(std::string filepath, bool hasHeader) {
     }
 
     fin.close();
+
+    return lines;
 }
 
 void FileHandler::writeToFile(
