@@ -2,6 +2,20 @@
 
 This is a boilerplate for a C++ project.
 
+## Requirements
+
+Have a quick look at system requirements. please refer to [requirements.md](./docs/requirements.md).
+
+## Design
+
+### Console Menu Interfaces
+
+Have a quick look at menu interfaces. please refer to [console-menu-interfaces.md](./docs/console-menu-interfaces.md).
+
+### UML Class Diagram
+
+Have a quick look at UML class Diagram. please refer to [cpp-library-system-uml.pdf](./docs//cpp-library-system-uml.pdf).
+
 ## Setup
 
 ### Prerequisites
@@ -140,3 +154,8 @@ The project has the following file structure:
 - `Makefile`: Contains the build, run, clean, and debug commands.
 - `.clang-format`: Contains the formatting style for clang-format.
 - `.vscode/`: Contains the Visual Studio Code settings and configurations for C++.
+- `docs/:` Contains the project documentation.
+
+## Disclaimer
+
+This project is for educational purposes only. It was created as part of a course on C++ programming by Dr. Mostafa Saad Ibrahim on [Udemy](https://www.udemy.com/course/cpp-4skills/)
