@@ -19,16 +19,17 @@ void SystemActionHandler::handleAction(int actionCode) {
         this->printBooksSortedById();
         break;
     case 5:
-        printBooksSortedByName();
+        this->printBooksSortedByName();
         break;
     case 6:
+        this->addUser();
         break;
     case 7:
         break;
     case 8:
         break;
     case 9:
-        break;
+        this->printUsers();
     case 10:
         break;
     default:
@@ -79,5 +80,23 @@ void SystemActionHandler::printBooksSortedByName() {
 
     for (auto &book : books) {
         std::cout << book.toString() << "\n";
+    }
+}
+
+void SystemActionHandler::addUser() {
+    auto [name] = SystemMenu::addUserMenu();
+
+    if (this->userRepo.isUserExist(name)) {
+        throw std::logic_error("Already exist user with this name");
+    }
+
+    this->userRepo.addUser(User(name));
+}
+
+void SystemActionHandler::printUsers() {
+    auto users = this->userRepo.getUsers();
+
+    for (const auto &user : users) {
+        std::cout << user.toString() << "\n";
     }
 }
