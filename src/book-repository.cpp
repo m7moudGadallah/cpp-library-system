@@ -11,7 +11,10 @@ BookRepository::BookRepository() { this->loadBooks(); }
 
 BookRepository::~BookRepository() { this->saveBooks(); }
 
-void BookRepository::addBook(const Book &book) { this->books.push_back(book); }
+void BookRepository::addBook(const Book &book) {
+    this->books.push_back(book);
+    this->saveBooks();
+}
 
 Book BookRepository::borrowBook(int id) {
     int index = this->findBookIndexById(id);
@@ -24,6 +27,7 @@ Book BookRepository::borrowBook(int id) {
     }
 
     this->books[index].setBorrowed(this->books[index].getBorrowed() + 1);
+    this->saveBooks();
     return this->books[index];
 }
 
@@ -34,6 +38,7 @@ Book BookRepository::returnBook(int id) {
         throw std::logic_error("Book not found");
     }
     this->books[index].setBorrowed(this->books[index].getBorrowed() - 1);
+    this->saveBooks();
     return this->books[index];
 }
 
