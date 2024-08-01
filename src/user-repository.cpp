@@ -25,7 +25,7 @@ User UserRepository::getUserById(int id) const {
 
 std::vector<User> UserRepository::getUsers() const { return this->users; }
 
-bool UserRepository::isUserExist(std::string name) {
+bool UserRepository::isUserExist(std::string name) const {
     name = StringUtility::tolower(name);
 
     for (const auto &user : users) {
