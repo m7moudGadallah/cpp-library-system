@@ -48,6 +48,8 @@ Enter user name:
 ```txt
 Enter user id:
 Enter book id:
+Enter borrow date (yyyy-mm-dd):
+Enter return date (yyyy-mm-dd):
 ```
 
 ## Return Book Menu
