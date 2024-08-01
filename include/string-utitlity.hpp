@@ -6,6 +6,7 @@
 
 class StringUtility {
   public:
+    static std::string tolower(const std::string &str);
     static std::vector<std::string> split(const std::string &buffer,
                                           std::string delimiter);
     static std::string join(const std::vector<std::string> &tokens,

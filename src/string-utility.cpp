@@ -1,5 +1,15 @@
 #include "../include/string-utitlity.hpp"
 
+std::string StringUtility::tolower(const std::string &str) {
+    std::string newStr = str;
+
+    for (auto &ch : newStr) {
+        ch = std::tolower(ch);
+    }
+
+    return newStr;
+}
+
 std::vector<std::string> StringUtility::split(const std::string &buffer,
                                               std::string delimiter) {
     std::vector<std::string> tokens;
