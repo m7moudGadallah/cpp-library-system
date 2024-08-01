@@ -20,6 +20,7 @@ int SystemMenu::mainMenu() {
 
     try {
         std::cin >> choice;
+        std::cin.ignore();
     } catch (...) {
         throw std::logic_error("Invalid input!");
     }
