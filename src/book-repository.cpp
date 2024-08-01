@@ -3,6 +3,7 @@
 #include "../include/book-repository.hpp"
 #include "../include/file-handler.hpp"
 #include "../include/global.hpp"
+#include "../include/string-utitlity.hpp"
 
 #include <stdexcept>
 
@@ -41,8 +42,12 @@ std::vector<Book> BookRepository::getBooks() const { return this->books; }
 std::vector<Book>
 BookRepository::getBooksByNamePrefix(std::string prefixName) const {
     std::vector<Book> foundBooks;
+
+    prefixName == StringUtility::tolower(prefixName);
+
     for (const Book &book : this->books) {
-        if (book.getName().find(prefixName) == 0) {
+        if (StringUtility::tolower(book.getName()).find(prefixName) !=
+            std::string::npos) {
             foundBooks.push_back(book);
         }
     }
@@ -50,8 +55,10 @@ BookRepository::getBooksByNamePrefix(std::string prefixName) const {
 }
 
 bool BookRepository::isBookExist(std::string name) const {
+    name = StringUtility::tolower(name);
+
     for (const Book &book : this->books) {
-        if (book.getName() == name)
+        if (StringUtility::tolower(book.getName()) == name)
             return true;
     }
 
