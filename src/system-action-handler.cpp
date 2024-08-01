@@ -30,7 +30,9 @@ void SystemActionHandler::handleAction(int actionCode) {
         break;
     case 9:
         this->printUsers();
+        break;
     case 10:
+        this->exit();
         break;
     default:
         throw std::logic_error("Invalid action code");
@@ -100,3 +102,5 @@ void SystemActionHandler::printUsers() {
         std::cout << user.toString() << "\n";
     }
 }
+
+void SystemActionHandler::exit() { std::exit(EXIT_SUCCESS); }
