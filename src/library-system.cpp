@@ -6,7 +6,6 @@
 void LibrarySystem::run() {
     try {
         actionHandler.handleAction(SystemMenu::mainMenu());
-        std::cout << "===============================\n\n";
     } catch (std::invalid_argument &e) {
         std::cerr << "Invalid Argument Error: " << e.what() << "\n";
     } catch (std::logic_error &e) {
@@ -14,4 +13,6 @@ void LibrarySystem::run() {
     } catch (...) {
         throw;
     }
+
+    std::cout << "===============================\n\n";
 }
