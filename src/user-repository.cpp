@@ -37,6 +37,10 @@ bool UserRepository::isUserExist(std::string name) const {
     return false;
 }
 
+bool UserRepository::isUserExist(int id) const {
+    return this->findUserIndexById(id) >= 0;
+}
+
 void UserRepository::loadUsers() {
     std::vector<std::vector<std::string>> lines;
     try {

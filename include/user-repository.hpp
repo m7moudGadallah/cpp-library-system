@@ -18,6 +18,7 @@ class UserRepository {
     User getUserById(int id) const;
     std::vector<User> getUsers() const;
     bool isUserExist(std::string name) const;
+    bool isUserExist(int id) const;
 
   private:
     void loadUsers();
