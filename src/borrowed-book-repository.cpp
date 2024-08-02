@@ -8,7 +8,7 @@ BorrowedBookRepository::BorrowedBookRepository() { this->loadBorrowedBooks(); }
 
 BorrowedBookRepository::~BorrowedBookRepository() { this->saveBorrowedBooks(); }
 
-void BorrowedBookRepository::borrowBook(BorrowedBook &borrowedBook) {
+void BorrowedBookRepository::borrowBook(const BorrowedBook &borrowedBook) {
     if (this->bookIdToUserIds.count(borrowedBook.getBookId()) > 0 and
         this->bookIdToUserIds.at(borrowedBook.getBookId())
             .count(borrowedBook.getUserId())) {

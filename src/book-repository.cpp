@@ -81,6 +81,10 @@ bool BookRepository::isBookExist(std::string name) const {
     return false;
 }
 
+bool BookRepository::isBookExist(int id) const {
+    return this->findBookIndexById(id) >= 0;
+}
+
 void BookRepository::loadBooks() {
     std::vector<std::vector<std::string>> lines;
     try {

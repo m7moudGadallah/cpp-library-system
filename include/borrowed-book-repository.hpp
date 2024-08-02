@@ -16,7 +16,7 @@ class BorrowedBookRepository {
   public:
     BorrowedBookRepository();
     ~BorrowedBookRepository();
-    void borrowBook(BorrowedBook &borrowedBook);
+    void borrowBook(const BorrowedBook &borrowedBook);
     void returnBook(int userId, int bookId);
     bool isUserBorrowedThisBook(int userId, int bookId) const;
     std::vector<BorrowedBook> getBorrowedBooks() const;

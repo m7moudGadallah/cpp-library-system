@@ -20,6 +20,7 @@ class BookRepository {
     Book getBookByName(std::string name) const;
     std::vector<Book> getBooksByNamePrefix(std::string namePrefix) const;
     bool isBookExist(std::string name) const;
+    bool isBookExist(int id) const;
 
   private:
     void loadBooks();
