@@ -44,6 +44,17 @@ Book BookRepository::returnBook(int id) {
 
 std::vector<Book> BookRepository::getBooks() const { return this->books; }
 
+Book BookRepository::getBookByName(std::string name) const {
+    name = StringUtility::tolower(name);
+
+    for (auto &book : this->books) {
+        if (StringUtility::tolower(book.getName()) == name)
+            return book;
+    }
+
+    throw std::logic_error("No book found with this name");
+}
+
 std::vector<Book>
 BookRepository::getBooksByNamePrefix(std::string prefixName) const {
     std::vector<Book> foundBooks;

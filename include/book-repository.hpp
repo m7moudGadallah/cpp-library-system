@@ -17,6 +17,7 @@ class BookRepository {
     Book borrowBook(int id);
     Book returnBook(int id);
     std::vector<Book> getBooks() const;
+    Book getBookByName(std::string name) const;
     std::vector<Book> getBooksByNamePrefix(std::string namePrefix) const;
     bool isBookExist(std::string name) const;
 
