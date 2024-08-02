@@ -61,7 +61,8 @@
     "streambuf": "cpp",
     "typeinfo": "cpp",
     "sstream": "cpp",
-    "fstream": "cpp"
+    "fstream": "cpp",
+    "unordered_set": "cpp"
   },
   "cSpell.words": ["fout"]
 }
