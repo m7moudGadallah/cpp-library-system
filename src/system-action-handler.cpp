@@ -14,6 +14,7 @@ void SystemActionHandler::handleAction(int actionCode) {
         this->searchBooksByPrefixName();
         break;
     case 3:
+        this->printWhoBorrowedBookByName();
         break;
     case 4:
         this->printBooksSortedById();
@@ -25,8 +26,10 @@ void SystemActionHandler::handleAction(int actionCode) {
         this->addUser();
         break;
     case 7:
+        this->borrowBook();
         break;
     case 8:
+        this->returnBook();
         break;
     case 9:
         this->printUsers();
@@ -65,6 +68,23 @@ void SystemActionHandler::searchBooksByPrefixName() {
     }
 }
 
+void SystemActionHandler::printWhoBorrowedBookByName() {
+    std::string bookName = SystemMenu::printWhoBorrowedBookByNameMenu();
+    Book book = this->bookRepo.getBookByName(bookName);
+
+    std::vector<int> userIds =
+        this->borrowedBookRepo.getUserIdsBorrowedABook(book.getId());
+
+    if (userIds.empty()) {
+        throw std::logic_error("No one borrowed this book");
+        return;
+    }
+
+    for (auto &userId : userIds) {
+        std::cout << this->userRepo.getUserById(userId).toString() << '\n';
+    }
+}
+
 void SystemActionHandler::printBooksSortedById() {
     auto books = this->bookRepo.getBooks();
 
@@ -93,6 +113,30 @@ void SystemActionHandler::addUser() {
     }
 
     this->userRepo.addUser(User(name));
+}
+
+void SystemActionHandler::borrowBook() {
+    auto [userId, bookId, borrowDate, returnDate] =
+        SystemMenu::borrowBookMenu();
+
+    if (!this->bookRepo.isBookExist(bookId)) {
+        throw std::logic_error("No book found with this id");
+    }
+
+    if (!this->userRepo.isUserExist(userId)) {
+        throw std::logic_error("No user found with this id");
+    }
+
+    this->borrowedBookRepo.borrowBook(
+        BorrowedBook(userId, bookId, borrowDate, returnDate));
+    this->bookRepo.borrowBook(bookId);
+}
+
+void SystemActionHandler::returnBook() {
+    auto [userId, bookId] = SystemMenu::returnBookMenu();
+
+    this->borrowedBookRepo.returnBook(userId, bookId);
+    this->bookRepo.returnBook(bookId);
 }
 
 void SystemActionHandler::printUsers() {
